@@ -1,24 +1,42 @@
-import './style.css'
-import typescriptLogo from './typescript.svg'
-import viteLogo from '/vite.svg'
-import { setupCounter } from './counter.ts'
+import { rentPull } from "../api/rentPull"; // Import the rentPull function
 
-document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
-  <div>
-    <a href="https://vitejs.dev" target="_blank">
-      <img src="${viteLogo}" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://www.typescriptlang.org/" target="_blank">
-      <img src="${typescriptLogo}" class="logo vanilla" alt="TypeScript logo" />
-    </a>
-    <h1>Vite + TypeScript</h1>
-    <div class="card">
-      <button id="counter" type="button"></button>
-    </div>
-    <p class="read-the-docs">
-      Click on the Vite and TypeScript logos to learn more
-    </p>
-  </div>
-`
+const searchForm = document.querySelector("form");
 
-setupCounter(document.querySelector<HTMLButtonElement>('#counter')!)
+searchForm?.addEventListener("submit", async (event) => {
+  event.preventDefault();
+
+  const zipCodeValue = (
+    document.getElementById("searchField") as HTMLInputElement
+  ).value;
+  const propertyTypeValue = (
+    document.getElementById("property") as HTMLSelectElement
+  ).value;
+  const bedroomsValue = (document.getElementById("bedroom") as HTMLInputElement)
+    .value;
+  const bathroomsValue = (
+    document.getElementById("bathroom") as HTMLInputElement
+  ).value;
+
+  try {
+    // Call rentPull function and pass user input values
+    const response = await rentPull(
+      zipCodeValue,
+      propertyTypeValue,
+      bedroomsValue,
+      bathroomsValue
+    );
+
+    // Update the HTML with the response data
+    const showAvgRent = document.getElementById("showAvgRent");
+
+    if (showAvgRent) {
+      // Check if the element exists
+      showAvgRent.textContent = `Average Rent: $${response.rent}`;
+    } else {
+      console.error("Element with id 'showAvgRent' not found in the HTML.");
+    }
+  } catch (error) {
+    console.error(error);
+    alert("An error occurred while fetching data.");
+  }
+});

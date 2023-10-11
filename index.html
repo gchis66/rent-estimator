@@ -1,13 +1,60 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite + TS</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link rel="stylesheet" href="./src/style.css" />
+    <title>Rent Estimator</title>
   </head>
   <body>
-    <div id="app"></div>
+    <h1>Rent Estimator</h1>
+    <div id="app">
+      <div id="searchBar">
+        <form class="example">
+          <select id="property" name="dropdown1">
+            <option value="Single Family">Single Family</option>
+            <option value="Condo">Condo</option>
+            <option value="Townhouse">Townhouse</option>
+            <option value="Manufactured">Manufactured</option>
+            <option value="Duplex-Triplex">Duplex-Triplex</option>
+            <option value="Apartment">Apartment</option>
+          </select>
+          <input
+            type="number"
+            id="bedroom"
+            name="number"
+            min="1"
+            max="10"
+            placeholder="# of bedrooms"
+          />
+          <input
+            type="number"
+            id="bathroom"
+            name="number"
+            min="1"
+            max="10"
+            placeholder="# of bathrooms"
+          />
+          <input
+            type="text"
+            placeholder="Enter Zip Code"
+            name="search"
+            id="searchField"
+            required
+            title="Please enter a zipcode"
+          />
+          <button type="submit" id="searchBtn">
+            <i class="fa fa-search"></i>
+          </button>
+        </form>
+      </div>
+      <div id="showAvgRent"></div>
+    </div>
     <script type="module" src="/src/main.ts"></script>
   </body>
 </html>
