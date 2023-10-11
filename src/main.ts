@@ -7,7 +7,7 @@ searchForm?.addEventListener("submit", async (event) => {
 
   const zipCodeValue = (
     document.getElementById("searchField") as HTMLInputElement
-  ).value;
+  ).value.toString();
   const propertyTypeValue = (
     document.getElementById("property") as HTMLSelectElement
   ).value;
@@ -28,7 +28,9 @@ searchForm?.addEventListener("submit", async (event) => {
     );
 
     // Update the HTML with the response data
-    const showAvgRent = document.getElementById("showAvgRent");
+    const showAvgRent = document.getElementById(
+      "showAvgRent"
+    ) as HTMLDivElement;
 
     if (showAvgRent) {
       // Check if the element exists
