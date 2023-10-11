@@ -11,11 +11,12 @@ searchForm?.addEventListener("submit", async (event) => {
   const propertyTypeValue = (
     document.getElementById("property") as HTMLSelectElement
   ).value;
-  const bedroomsValue = (document.getElementById("bedroom") as HTMLInputElement)
-    .value;
+  const bedroomsValue = (
+    document.getElementById("bedroom") as HTMLInputElement
+  ).value.toString();
   const bathroomsValue = (
     document.getElementById("bathroom") as HTMLInputElement
-  ).value;
+  ).value.toString();
 
   try {
     // Call rentPull function and pass user input values
