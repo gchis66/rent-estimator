@@ -1,8 +1,7 @@
 import axios from "axios";
-import { config } from "dotenv";
 
 // Load environment variables from .env file
-config();
+
 const url = "https://realtymole-rental-estimate-v1.p.rapidapi.com/rentalPrice";
 const apiKey = "3b3912e780msh41ff7b33b453ba0p1477edjsn3a2d1357e6a2";
 
