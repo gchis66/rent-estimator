@@ -3,7 +3,7 @@ import axios from "axios";
 // Load environment variables from .env file
 
 const url = "https://realtymole-rental-estimate-v1.p.rapidapi.com/rentalPrice";
-const apiKey = "3b3912e780msh41ff7b33b453ba0p1477edjsn3a2d1357e6a2";
+const apiKey = import.meta.env.VITE_RENT_API_KEY;
 
 // Export an async function to make the API call
 export async function rentPull(
