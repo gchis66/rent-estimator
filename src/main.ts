@@ -34,7 +34,7 @@ searchForm?.addEventListener("submit", async (event) => {
 
     if (showAvgRent) {
       // Check if the element exists
-      showAvgRent.textContent = `Average Rent: $${response.rent}`;
+      showAvgRent.textContent = `<h2>Average Rent: $${response.rent}</h2>`;
     } else {
       console.error("Element with id 'showAvgRent' not found in the HTML.");
     }
