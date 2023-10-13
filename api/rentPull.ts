@@ -27,7 +27,11 @@ export async function rentPull(
     });
 
     // Return the response data
-    return response.data;
+    if (response.data !== undefined || null) {
+      return response.data;
+    } else {
+      return "Unable to find rent data!";
+    }
   } catch (error) {
     throw error;
   }
