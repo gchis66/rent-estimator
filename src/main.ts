@@ -31,10 +31,14 @@ searchForm?.addEventListener("submit", async (event) => {
     const showAvgRent = document.getElementById(
       "showAvgRent"
     ) as HTMLDivElement;
-
+    // Check if the element exists
     if (showAvgRent) {
-      // Check if the element exists
-      showAvgRent.innerHTML = `<h2>Average Rent: $${response.rent}</h2>`;
+      // Check if response is not undefined
+      if (response && response.rent !== undefined) {
+        showAvgRent.innerHTML = `<h2>Average Rent: $${response.rent}</h2>`;
+      } else {
+        showAvgRent.innerHTML = "<h2>Could not find rent data!</h2>";
+      }
     } else {
       console.error("Element with id 'showAvgRent' not found in the HTML.");
     }
